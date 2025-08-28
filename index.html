@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexandre Menard - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary-bg': '#0a0a0a',
+                        'secondary-bg': '#1a1a2e',
+                        'text-light': '#e0e0e0',
+                        'text-bright-gray': '#c5c5c5',
+                        'text-muted': '#b0b0b0',
+                        'orange-primary': '#ff8a00',
+                        'orange-secondary': '#da1b60',
+                    },
+                    backdropBlur: {
+                        'xs': '2px',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-poppins text-text-light bg-primary-bg overflow-hidden">
+    <!-- Split Layout Container -->
+    <div class="flex h-screen w-full bg-black/40 backdrop-blur-xl justify-center">
+        <div class="flex h-screen w-full max-w-screen-xl">
+            <!-- Fixed Left Panel -->
+            <div class="w-2/5 md:w-2/5 w-full h-screen z-10 flex items-center justify-center p-8">
+                <div class="max-w-md text-left md:text-left text-center">
+                    <h1 class="text-4xl lg:text-5xl font-bold text-white mb-3">
+                        <span class="bg-gradient-to-r from-orange-primary to-orange-secondary bg-clip-text text-transparent">Alexandre Menard</span>
+                    </h1>
+                    <p class="text-xl lg:text-2xl text-text-light mb-4 font-medium">
+                        Quantum physics student
+                    </p>
+                    <p class="text-text-light mb-6 leading-relaxed">
+                        Enthusiast to shape the future of computing on your side. Passionate about computer science, atomic/molecular physics and quantum information.
+                    </p>
+                    <!-- Left-side vertical navigation -->
+                    <nav aria-label="Primary" class="mt-6">
+                        <ul class="flex flex-col space-y-3">
+                            <li><a href="#education" class="nav-link text-text-light hover:text-orange-primary transition-colors">Education</a></li>
+                            <li><a href="#experience" class="nav-link text-text-light hover:text-orange-primary transition-colors">Experience</a></li>
+                            <li><a href="#projects" class="nav-link text-text-light hover:text-orange-primary transition-colors">Projects</a></li>
+                            <li><a href="#skills" class="nav-link text-text-light hover:text-orange-primary transition-colors">Skills</a></li>
+                        </ul>
+                    </nav>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="https://www.linkedin.com/in/alexandre-menard-201351299/" class="text-text-light hover:text-orange-primary transition-all duration-300 transform hover:scale-110">
+                            <i class="fab fa-linkedin text-2xl"></i>
+                        </a>
+                        <a href="https://github.com/alexandremnd" class="text-text-light hover:text-orange-primary transition-all duration-300 transform hover:scale-110">
+                            <i class="fab fa-github text-2xl"></i>
+                        </a>
+                        <a href="mailto:alexandre.mnd@proton.me" class="text-text-light hover:text-orange-primary transition-all duration-300 transform hover:scale-110">
+                            <i class="fas fa-envelope text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel - Scrollable Content -->
+            <div id="right-panel" class="right-panel w-3/5 h-screen overflow-y-auto overflow-x-hidden no-scrollbar">
+                <!-- Content Sections -->
+                <div class="p-8 space-y-16">
+                    <!-- Education Section -->
+                    <section id="education" class="mb-16">
+                        <h2 class="text-3xl font-bold mb-8 bg-gradient-to-r from-orange-primary to-orange-secondary bg-clip-text text-transparent">Education</h2>
+                        <div class="grid gap-6">
+                            <div class="glass-card rounded-xl p-6 fade-in-up">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+                                    <!-- Left Column: Date and Location -->
+                                    <div class="md:col-span-1">
+                                        <div class="text-gray-400 font-medium mb-2">
+                                            <i class="fas fa-calendar-days mr-2"></i> Sept 2025 - June 2026
+                                        </div>
+                                        <div class="text-gray-400 font-medium mb-2">
+                                            <i class="fas fa-map-pin mr-2"></i> Orsay, France
+                                        </div>
+                                        <div class="text-gray-400 font-medium">
+                                            <i class="fas fa-graduation-cap mr-2"></i>Honors
+                                        </div>
+                                    </div>
+                                    <!-- Right Column: Title, University, and Description -->
+                                    <div class="md:col-span-2">
+                                        <h3 class="font-semibold text-white mb-2">Master's Degree in Quantum Physics (QLMN)</h3>
+                                        <p class="font-medium text-orange-primary mb-4">
+                                            Paris-Saclay University
+                                        </p>
+                                        <p class="text-gray-400 leading-relaxed">
+                                            Advanced studies in quantum mechanics, quantum information theory, and computational physics. Focus on quantum algorithms, quantum computing applications, and theoretical frameworks for understanding quantum phenomena in modern physics research.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="glass-card rounded-xl p-6 fade-in-up">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+                                    <!-- Left Column: Date and Location -->
+                                    <div class="md:col-span-1">
+                                        <div class="text-gray-400 font-medium mb-2">
+                                            <i class="fas fa-calendar-days mr-2"></i> Sept 2021 - June 2024
+                                        </div>
+                                        <div class="text-gray-400 mb-2">
+                                            <i class="fas fa-map-pin mr-2"></i> Orsay, France
+                                        </div>
+                                        <div class="text-gray-400 font-medium">
+                                            <i class="fas fa-graduation-cap mr-2"></i>Highest Honors
+                                        </div>
+                                    </div>
+                                    <!-- Right Column: Title, University, and Description -->
+                                    <div class="md:col-span-2">
+                                        <h3 class="font-semibold text-white mb-2">Bachelor's Degree in Fundamental Physics</h3>
+                                        <p class="font-medium text-orange-primary mb-4">
+                                            Paris-Saclay University
+                                        </p>
+                                        <p class="text-gray-400 leading-relaxed">
+                                            Comprehensive foundation in fundamental physics principles including classical mechanics, electromagnetism, quantum mechanics, and thermodynamics.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Experience Section -->
+                    <section id="experience" class="mb-16">
+                        <h2 class="text-3xl font-bold mb-8 bg-gradient-to-r from-orange-primary to-orange-secondary bg-clip-text text-transparent">Experience</h2>
+                        <div class="glass-card rounded-xl p-6 fade-in-up">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+                                <!-- Left Column: Date and Location -->
+                                <div class="md:col-span-1">
+                                    <div class="text-gray-400 font-medium mb-2">
+                                        <i class="fas fa-calendar-days mr-2"></i> May 2025 - Aug 2025
+                                    </div>
+                                    <div class="text-gray-400">
+                                        <i class="fas fa-map-pin mr-2"></i> Toulouse, France
+                                    </div>
+                                </div>
+                                <!-- Right Column: Title, University, and Description -->
+                                <div class="md:col-span-2">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h3 class="font-bold text-white">Internship in Quantum Optics</h3>
+                                        <div class="flex space-x-3">
+                                            <a href="file/intern-report-toulouse.pdf" class="text-orange-primary hover:text-white rounded-lg transition-all duration-300">
+                                                <i class="fas fa-sheet-plastic"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <p class="font-medium text-orange-primary mb-4">
+                                        <i class="fas fa-graduation-cap mr-2"></i>Laboratoire Collisions, Agrégats et Réactivités (LCAR)
+                                    </p>
+                                    <p class="text-gray-400 leading-relaxed">
+                                        Comprehensive foundation in computer science principles including algorithms, data structures, software engineering, and full-stack web development. Graduated Magna Cum Laude with focus on modern programming paradigms and software architecture.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card rounded-xl p-6 fade-in-up">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+                                <!-- Left Column: Date and Location -->
+                                <div class="md:col-span-1">
+                                    <div class="text-gray-400 font-medium mb-2">
+                                        <i class="fas fa-calendar-days mr-2"></i> May 2024 - Jul 2024
+                                    </div>
+                                    <div class="text-gray-400">
+                                        <i class="fas fa-map-pin mr-2"></i> Orsay, France
+                                    </div>
+                                </div>
+                                <!-- Right Column: Title, University, and Description -->
+                                <div class="md:col-span-2">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h3 class="font-bold text-white">Internship in Quantum Optics and Molecular Physics</h3>
+                                        <div class="flex space-x-3">
+                                            <a href="https://doi.org/10.1063/5.0268045" class="text-orange-primary hover:text-white rounded-lg transition-all duration-300">
+                                                <i class="fas fa-external-link-alt"></i>
+                                            </a>
+                                            <a href="file/intern-report-ismo.pdf" class="text-orange-primary hover:text-white rounded-lg transition-all duration-300">
+                                                <i class="fas fa-sheet-plastic"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <p class="font-medium text-orange-primary mb-4">
+                                        <i class="fas fa-graduation-cap mr-2"></i>Institut des sciences moléculaires d'Orsay (ISMO)
+                                    </p>
+                                    <p class="text-gray-400 leading-relaxed">
+                                        Fortran simulation of linear tri-atomic molecules, described by the Henon-Heiles potential
+                                        and coupled to a quantized electromagnetic field inside a Fabry-Perot microcavity.
+                                        The study first considers a single molecule in the cavity and is then extended to multiple
+                                        molecules in order to investigate collective behaviors. <br>
+                                        My work contributed to a published <a href="https://doi.org/10.1063/5.0268045" class="text-orange-primary hover:text-white rounded-lg transition-all duration-300">article</a> in the Journal of Chemical Physics.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card rounded-xl p-6 fade-in-up">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+                                <!-- Left Column: Date and Location -->
+                                <div class="md:col-span-1">
+                                    <div class="text-gray-400 font-medium mb-2">
+                                        <i class="fas fa-calendar-days mr-2"></i> December 2023 - Feb 2023
+                                    </div>
+                                    <div class="text-gray-400">
+                                        <i class="fas fa-map-pin mr-2"></i> Orsay, France
+                                    </div>
+                                </div>
+                                <!-- Right Column: Title, University, and Description -->
+                                <div class="md:col-span-2">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h3 class="font-bold text-white">Internship in Physical Chemistry</h3>
+                                        <!-- <div class="flex space-x-3">
+                                            <a href="#" class="text-orange-primary hover:text-white rounded-lg transition-all duration-300">
+                                                <i class="fas fa-external-link-alt"></i>
+                                            </a>
+                                        </div> -->
+                                    </div>
+                                    <p class="font-medium text-orange-primary mb-4">
+                                        <i class="fas fa-graduation-cap mr-2"></i>Ecole Normale Supérieure Paris-Saclay (ENS)
+                                    </p>
+                                    <p class="text-gray-400 leading-relaxed">
+                                        Python simulation of fluorescence quenching in solid phase. Small collaboration with a researcher one day per week.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Projects Section -->
+                    <section id="projects" class="mb-16">
+                        <h2 class="text-3xl font-bold mb-8 bg-gradient-to-r from-orange-primary to-orange-secondary bg-clip-text text-transparent">Projects</h2>
+
+                        <div class="grid gap-8">
+                            <div class="glass-card rounded-xl overflow-hidden fade-in-up">
+                                <div class="grid grid-cols-1 lg:grid-cols-3 gap-0">
+                                    <!-- Project Image -->
+                                    <div class="relative group overflow-hidden lg:col-span-1 hidden lg:block max-h-42">
+                                        <img src="img/atomicOrbitals.png" alt="Ising Model" class="w-full h-46 lg:h-46 object-cover transition-transform duration-500 group-hover:scale-105">
+                                        <!-- <div class="absolute inset-0 bg-gradient-to-br from-orange-primary/20 to-orange-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> -->
+                                    </div>
+                                    <!-- Project Info -->
+                                    <div class="p-6 lg:col-span-2">
+                                        <div class="flex items-center justify-between mb-4">
+                                            <h3 class="text-medium font-bold text-white">Molecular Hartree-Fock</h3>
+                                            <div class="flex space-x-3">
+                                                <!-- <a href="#" class="p-2 bg-orange-primary/20 hover:bg-orange-primary/40 text-orange-primary hover:text-white rounded-lg transition-all duration-300">
+                                                    <i class="fas fa-external-link-alt"></i>
+                                                </a> -->
+                                                <a href="https://github.com/alexandremnd/AtomicOrbitals" class="p-2 bg-gray-600/20 hover:bg-gray-600/40 text-gray-400 hover:text-white rounded-lg transition-all duration-300">
+                                                    <i class="fab fa-github"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p class="text-gray-300 mb-4 leading-relaxed text-xs">
+                                            Hartree-Fock simulation to compute atomic/molecular orbitals and ground state energies. Succesfully predicted ground state of ethylen, and many atoms up to cerium (Z = 58).
+                                        </p>
+                                        <!-- <div class="flex flex-wrap gap-2">
+                                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm border border-blue-500/30">Molecular phyics</span>
+                                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm border border-green-500/30">C++ Language</span>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 1 -->
+                            <div class="glass-card rounded-xl overflow-hidden fade-in-up">
+                                <div class="grid grid-cols-1 lg:grid-cols-3 gap-0">
+                                    <!-- Project Image -->
+                                    <div class="relative group overflow-hidden lg:col-span-1 hidden lg:block">
+                                        <img src="img/ising.png" alt="Ising Model" class="w-full h-46 lg:h-46 object-cover transition-transform duration-500 group-hover:scale-105">
+                                        <!-- <div class="absolute inset-0 bg-gradient-to-br from-orange-primary/20 to-orange-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> -->
+                                    </div>
+                                    <!-- Project Info -->
+                                    <div class="p-6 lg:col-span-2">
+                                        <div class="flex items-center justify-between mb-4">
+                                            <h3 class="text-medium  font-bold text-white">Ising Model</h3>
+                                            <div class="flex space-x-3">
+                                                <!-- <a href="#" class="p-2 bg-orange-primary/20 hover:bg-orange-primary/40 text-orange-primary hover:text-white rounded-lg transition-all duration-300">
+                                                    <i class="fas fa-external-link-alt"></i>
+                                                </a> -->
+                                                <a href="https://github.com/alexandremnd/IsingModel" class="p-2 bg-gray-600/20 hover:bg-gray-600/40 text-gray-400 hover:text-white rounded-lg transition-all duration-300">
+                                                    <i class="fab fa-github"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p class="text-gray-300 mb-4 leading-relaxed text-xs">
+                                            A simulation of the Ising model, demonstrating phase transitions in statistical mechanics.
+                                        </p>
+                                        <!-- <div class="flex flex-wrap gap-2">
+                                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm border border-blue-500/30">Statistical mechanics</span>
+                                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm border border-green-500/30">C Language</span>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="glass-card rounded-xl overflow-hidden fade-in-up">
+                                <div class="grid grid-cols-1 lg:grid-cols-3 gap-0">
+                                    <!-- Project Image -->
+                                    <div class="relative group overflow-hidden lg:col-span-1 hidden lg:block">
+                                        <img src="img/black-hole.png" alt="Ising Model" class="w-full h-46 lg:h-46 object-cover transition-transform duration-500 group-hover:scale-105">
+                                        <!-- <div class="absolute inset-0 bg-gradient-to-br from-orange-primary/20 to-orange-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> -->
+                                    </div>
+                                    <!-- Project Info -->
+                                    <div class="p-6 lg:col-span-2">
+                                        <div class="flex items-center justify-between mb-4">
+                                            <h3 class="text-medium  font-bold text-white">Black hole simulator</h3>
+                                            <div class="flex space-x-3">
+                                                <!-- <a href="#" class="p-2 bg-orange-primary/20 hover:bg-orange-primary/40 text-orange-primary hover:text-white rounded-lg transition-all duration-300">
+                                                    <i class="fas fa-external-link-alt"></i>
+                                                </a> -->
+                                                <a href="https://github.com/alexandremnd/Schwarzschild-Black-Hole-Python" class="p-2 bg-gray-600/20 hover:bg-gray-600/40 text-gray-400 hover:text-white rounded-lg transition-all duration-300">
+                                                    <i class="fab fa-github"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p class="text-gray-300 mb-4 leading-relaxed text-xs">
+                                            Black-hole simulation with Python using the Schwarzschild metric. Image generation is CPU-parralel.
+                                        </p>
+                                        <!-- <div class="flex flex-wrap gap-2">
+                                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm border border-green-500/30">Python</span>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- View All Projects Button -->
+                        <div class="text-center mt-12">
+                            <a href="https://github.com/alexandremenard" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-orange-primary to-orange-secondary text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-orange-primary/25 transition-all duration-300 transform hover:scale-105">
+                                <i class="fab fa-github mr-3 text-xl"></i>
+                                View All Projects on GitHub
+                            </a>
+                        </div>
+                    </section>
+
+                    <!-- Skills Section -->
+                    <section id="skills" class="py-10">
+                        <div class="max-w-6xl mx-auto">
+                            <h2 class="text-3xl font-bold mb-8 bg-gradient-to-r from-orange-primary to-orange-secondary bg-clip-text text-transparent">Technical Skills</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div class="skill-category glass-card p-6 rounded-xl">
+                                    <div class="skill-icon text-3xl mb-3 text-center"><i class="fas fa-globe"></i></div>
+                                    <h5 class="text-gradient mb-2 text-center">Languages</h5>
+                                    <ul class="text-gray-300 space-y-1 text-sm text-center">
+                                        <li>French (Native)</li>
+                                        <li>English (C1/Proficient)</li>
+                                    </ul>
+                                </div>
+                                <div class="skill-category glass-card p-6 rounded-xl">
+                                    <div class="skill-icon text-3xl mb-3 text-center"><i class="fas fa-code"></i></div>
+                                    <h5 class="text-gradient mb-2 text-center">Programming</h5>
+                                    <ul class="text-gray-300 space-y-1 text-sm text-center">
+                                        <li>Python</li>
+                                        <li>C/C++</li>
+                                        <li>Julia</li>
+                                    </ul>
+                                </div>
+                                <div class="skill-category glass-card p-6 rounded-xl">
+                                    <div class="skill-icon text-3xl mb-3 text-center"><i class="fas fa-laptop-code"></i></div>
+                                    <h5 class="text-gradient mb-2 text-center">Libraries</h5>
+                                    <ul class="text-gray-300 space-y-1 text-sm text-center">
+                                        <li>Numpy/Scipy/Jax</li>
+                                        <li>Matplotlib/Pyplot</li>
+                                        <li>MySQL</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Footer -->
+                    <footer class="py-8">
+                        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
+                            <p class="text-gray-600">&copy; 2025 Alexandre Menard. All rights reserved.</p>
+                        </div>
+                    </footer>
+                </div>
+            </div> <!-- End Right Panel -->
+        </div>
+    </div><!-- End Split Layout -->
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
