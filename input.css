@@ -1,0 +1,193 @@
+@import "tailwindcss";
+
+/* Tailwind v4 theme moved from tailwind.config.js */
+@theme {
+    /* Fonts */
+    --font-inter: "Inter", sans-serif;
+    --font-space: "Space Grotesk", sans-serif;
+
+    /* Colors */
+    --color-quantum-blue: #0066ff;
+    --color-quantum-purple: #8b5cf6;
+    --color-quantum-pink: #ec4899;
+    --color-neon-cyan: #00ffff;
+    --color-dark-bg: #0a0a0f;
+    --color-darker-bg: #050508;
+    /* Helpers used by custom CSS selectors */
+    --color-card-bg: rgba(15, 15, 25, 0.8);
+    --color-glass-border: rgba(255, 255, 255, 0.1);
+
+    /* Animations */
+    --animate-float: float 6s ease-in-out infinite;
+    --animate-pulse-glow: pulse-glow 2s ease-in-out infinite alternate;
+    --animate-slide-up: slide-up 0.8s ease-out forwards;
+    --animate-particle-float: particle-float 20s linear infinite;
+    --animate-particle-drift: particle-drift 15s ease-in-out infinite;
+    --animate-gradient-shift: gradient-shift 3s ease-in-out infinite;
+    --animate-text-glow: text-glow 2s ease-in-out infinite alternate;
+}
+
+/* Keyframes used by the custom animation tokens above */
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 40px rgba(0, 102, 255, 0.6);
+    }
+}
+
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes particle-float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+    }
+}
+
+@keyframes particle-drift {
+    0%,
+    100% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(30px);
+    }
+}
+
+@keyframes gradient-shift {
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes text-glow {
+    0% {
+        text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+    100% {
+        text-shadow:
+            0 0 40px rgba(0, 255, 255, 0.8),
+            0 0 60px rgba(139, 92, 246, 0.3);
+    }
+}
+
+.glass-morphism {
+    background: rgba(15, 15, 25, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #00ffff 0%, #8b5cf6 50%, #ec4899 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.quantum-card {
+    background: linear-gradient(135deg, rgba(15, 15, 25, 0.8) 0%, rgba(25, 25, 40, 0.6) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.quantum-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0, 255, 255, 0.3);
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: radial-gradient(circle, #00ffff 0%, transparent 70%);
+    border-radius: 50%;
+    animation: particle-float linear infinite;
+    pointer-events: none;
+}
+
+.nav-indicator {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-indicator::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00ffff, #8b5cf6);
+    transition: width 0.3s ease;
+}
+
+.nav-indicator:hover::before,
+.nav-indicator.active::before {
+    width: 100%;
+}
+
+.scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #00ffff, #8b5cf6, #ec4899);
+    z-index: 1000;
+    transition: width 0.1s ease;
+}
+
+@keyframes blink {
+    0%,
+    50% {
+        border-color: #00ffff;
+    }
+    51%,
+    100% {
+        border-color: transparent;
+    }
+}
+
+.hero-bg {
+    background: radial-gradient(ellipse at center, rgba(0, 102, 255, 0.1) 0%, transparent 70%), radial-gradient(ellipse at top right, rgba(139, 92, 246, 0.1) 0%, transparent 70%), radial-gradient(ellipse at bottom left, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
+}
+
+.section-fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.section-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
