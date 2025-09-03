@@ -1,248 +1,137 @@
-// Dark Translucent Portfolio JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all functionality
-    initializeNavbar();
-    initializeScrollAnimations();
-    initializeProjectCards();
-    initializeSmoothScrolling();
-});
 
-// Navbar functionality with translucent effect
-function initializeNavbar() {
-    const navbar = document.querySelector('.navbar');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const rightPanel = document.getElementById('right-panel') || window;
+// Particle System
+function createParticles() {
+    const container = document.getElementById('particles-container');
+    const particleCount = 80;
 
-    // Set education as default active nav link on page load
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+
+        // Random positioning
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+
+        // Random size variations
+        const size = Math.random() * 3 + 1;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+
+        // Random opacity
+        particle.style.opacity = Math.random() * 0.6 + 0.2;
+
+        // Random animation timing
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
+
+        // Add some variety in colors
+        if (Math.random() > 0.7) {
+            particle.style.background = 'radial-gradient(circle, #8b5cf6 0%, transparent 70%)';
+        } else if (Math.random() > 0.5) {
+            particle.style.background = 'radial-gradient(circle, #ec4899 0%, transparent 70%)';
+        }
+
+        container.appendChild(particle);
+    }
+}
+
+// Scroll Progress Indicator
+function updateScrollProgress() {
+    const scrollProgress = document.querySelector('.scroll-indicator');
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (window.pageYOffset / totalHeight) * 100;
+    scrollProgress.style.width = progress + '%';
+}
+
+// Active Navigation Link
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-indicator');
+
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
+
     navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === '#education') {
+        if (link.getAttribute('href') === '#' + current) {
             link.classList.add('active');
         }
     });
+}
 
-    // Function to determine scroll container based on screen size
-    function getScrollContainer() {
-        return window.innerWidth <= 768 ? window : rightPanel;
-    }
+// Section Fade-in Animation
+function handleSectionFadeIn() {
+    const sections = document.querySelectorAll('.section-fade');
 
-    // Add scrolled class for backdrop effect based on right panel scroll
-    function handleScroll() {
-        const scrollContainer = getScrollContainer();
-        const scrollTop = (scrollContainer === window) ? window.scrollY : scrollContainer.scrollTop;
+    sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const sectionVisible = 150;
 
-        if (scrollTop > 50) {
-            navbar && navbar.classList.add('scrolled');
-        } else {
-            navbar && navbar.classList.remove('scrolled');
+        if (sectionTop < window.innerHeight - sectionVisible) {
+            section.classList.add('visible');
         }
-
-        // Active nav link highlighting
-        let current = '';
-        const sections = document.querySelectorAll('section[id]');
-
-        sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            const threshold = window.innerWidth <= 768 ? 100 : 200;
-
-            if (scrollContainer === window) {
-                if (rect.top <= threshold) {
-                    current = section.getAttribute('id');
-                }
-            } else {
-                const containerTop = scrollContainer.getBoundingClientRect().top;
-                const sectionTop = rect.top - containerTop + scrollContainer.scrollTop;
-
-                if (sectionTop <= scrollContainer.scrollTop + threshold) {
-                    current = section.getAttribute('id');
-                }
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-    }
-
-    // Attach scroll listeners
-    rightPanel.addEventListener('scroll', handleScroll);
-    window.addEventListener('scroll', handleScroll);
-
-    // Handle window resize
-    window.addEventListener('resize', () => {
-        handleScroll(); // Re-evaluate on resize
     });
 }
 
-// Smooth scrolling for navigation links
-function initializeSmoothScrolling() {
-    const rightPanel = document.getElementById('right-panel');
+// Smooth Scrolling for Navigation Links
+function initSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
 
-            if (target) {
-                // Determine scroll container based on screen size
-                const isMobile = window.innerWidth <= 768;
-
-                if (isMobile) {
-                    // On mobile, scroll the window
-                    const offsetTop = target.getBoundingClientRect().top + window.scrollY - 20;
-                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-                } else if (rightPanel) {
-                    // On desktop, scroll the right panel
-                    const containerTop = rightPanel.getBoundingClientRect().top;
-                    const targetTop = target.getBoundingClientRect().top - containerTop + rightPanel.scrollTop - 20;
-                    rightPanel.scrollTo({ top: targetTop, behavior: 'smooth' });
-                } else {
-                    // Fallback
-                    const offsetTop = target.offsetTop - 80;
-                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-                }
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }
         });
     });
 }
 
-// Scroll animations with Intersection Observer
-function initializeScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+// Typewriter Effect
+function initTypewriter() {
+    const typewriterElement = document.querySelector('.typewriter');
+    if (typewriterElement) {
+        const text = typewriterElement.textContent;
+        typewriterElement.textContent = '';
 
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-
-                // Animate counters for stats
-                if (entry.target.classList.contains('stat-number')) {
-                    animateCounter(entry.target);
-                }
-
-                // Stagger timeline items
-                if (entry.target.classList.contains('timeline-item')) {
-                    const items = entry.target.parentNode.querySelectorAll('.timeline-item');
-                    items.forEach((item, index) => {
-                        setTimeout(() => {
-                            item.classList.add('visible');
-                        }, index * 200);
-                    });
-                }
+        let i = 0;
+        const typeWriter = () => {
+            if (i < text.length) {
+                typewriterElement.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
             }
-        });
-    }, observerOptions);
+        };
 
-    // Observe all fade-in elements
-    document.querySelectorAll('.fade-in').forEach(el => {
-        observer.observe(el);
-    });
-
-    // Observe stat numbers
-    document.querySelectorAll('.stat-number').forEach(el => {
-        observer.observe(el);
-    });
-
-    // Observe timeline items
-    document.querySelectorAll('.timeline-item').forEach(el => {
-        observer.observe(el);
-    });
-}
-
-// Enhanced project cards with glass morphism effects
-function initializeProjectCards() {
-    const projectCards = document.querySelectorAll('.project-card');
-
-    projectCards.forEach(card => {
-        const overlay = card.querySelector('.project-overlay');
-        const image = card.querySelector('.project-image img');
-
-        card.addEventListener('mouseenter', function() {
-            // Add glass morphism glow effect
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-            this.style.boxShadow = '0 25px 50px rgba(102, 126, 234, 0.4)';
-
-            if (overlay) {
-                overlay.style.opacity = '1';
-            }
-
-            if (image) {
-                image.style.transform = 'scale(1.1) rotate(2deg)';
-            }
-        });
-
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-            this.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.5)';
-
-            if (overlay) {
-                overlay.style.opacity = '0';
-            }
-
-            if (image) {
-                image.style.transform = 'scale(1) rotate(0deg)';
-            }
-        });
-
-        // Add click ripple effect
-        card.addEventListener('click', function(e) {
-            const ripple = document.createElement('div');
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            ripple.style.cssText = `
-                position: absolute;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                background: rgba(102, 126, 234, 0.6);
-                transform: scale(0);
-                animation: ripple 0.6s linear;
-                left: ${x - 10}px;
-                top: ${y - 10}px;
-                pointer-events: none;
-            `;
-
-            this.style.position = 'relative';
-            this.appendChild(ripple);
-
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        });
-    });
-
-    // Add ripple animation CSS
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes ripple {
-            to {
-                transform: scale(10);
-                opacity: 0;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-}
-
-
-// Add floating animation CSS
-const floatingStyle = document.createElement('style');
-floatingStyle.textContent = `
-    @keyframes float {
-        0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-        10% { opacity: 1; }
-        90% { opacity: 1; }
-        100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        setTimeout(typeWriter, 1000);
     }
-`;
-document.head.appendChild(floatingStyle);
+}
 
+// Initialize everything when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    createParticles();
+    initSmoothScrolling();
+    initTypewriter();
+    handleSectionFadeIn();
 
-window.addEventListener('scroll', debouncedScrollHandler);
+    // Handle scroll events
+    window.addEventListener('scroll', function() {
+        updateScrollProgress();
+        updateActiveNavLink();
+        handleSectionFadeIn();
+    });
+
+    // Handle resize events
+    window.addEventListener('resize', handleSectionFadeIn);
+});
+
